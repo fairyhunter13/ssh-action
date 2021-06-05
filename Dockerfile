@@ -1,9 +1,10 @@
-FROM alpine:latest
-RUN apk update && \
-  apk add --no-cache ca-certificates \
+FROM debian:slim
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends ca-certificates \
   openssh-client \
   sshpass \
-  bash
+  bash && \
+  apt autoremove -y
 
 COPY LICENSE README.md /
 
